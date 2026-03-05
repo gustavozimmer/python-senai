@@ -1,0 +1,6 @@
+x1 = int(input("Digite a cordenada x1: "))
+y1 = int(input("Digite a cordenada y1: "))
+x2 = int(input("Digite a cordenada x2: "))
+y2 = int(input("Digite a cordenada y2: "))
+distancia = (((x2 - x1) ** 2) + ((y2 - y1) ** 2)) ** (1/2)
+print(f"A distancia é: {distancia}")
