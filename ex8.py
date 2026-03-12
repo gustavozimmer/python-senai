@@ -1,0 +1,5 @@
+qtde_cameras = int(input("Digite a quantidade de cameras: "))
+preco = float(input("Digite o preço de cada camera: "))
+custo_instalação = float(input("Digite o preço de instalção por camera: "))
+total = qtde_cameras * preco + (qtde_cameras * custo_instalação)
+print(f"O custo total é: R${total:.2f}")
