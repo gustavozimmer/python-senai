@@ -12,24 +12,24 @@ print("""1 - ABRIR ARQUIVO
 n = int(input("Digite sua opção: "))
 match n:
     case 1:
-        print("ABRIR ARQUIVO")
+        print("ABRIR ARQUIVO...")
     case 2:
-        print("SALVAR ARQUIVO")
+        print("SALVAR ARQUIVO...")
     case 3:
-        print("FECHAR ARQUIVOS")
+        print("FECHAR ARQUIVOS...")
     case 4:
-        print("COPIAR")
+        print("COPIAR...")
     case 5:
-        print("COLAR")
+        print("COLAR...")
     case 6:
-        print("RECORTAR")
+        print("RECORTAR...")
     case 7:
-        print("DESFAZER")
+        print("DESFAZER...")
     case 8:
-        print("REFAZER")
+        print("REFAZER...")
     case 9:
-        print("IMPRIMIR")
+        print("IMPRIMIR...")
     case 10:
-        print("SAIR DO PROGRAMA")
+        print("SAIR DO PROGRAMA...")
     case _:
         print("Invalido")
