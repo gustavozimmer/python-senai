@@ -4,9 +4,9 @@ segundos = int(input("Digite os segundos: "))
 
 if horas > 24 or horas < 0:
     print("Inválido")
-elif minutos > 60 or minutos < 0:
+elif minutos > 59 or minutos < 0:
     print("Inválido")
-elif segundos > 60 or segundos < 0:
+elif segundos > 59 or segundos < 0:
     print("Inválido")
 else:
     print("Hora válida")

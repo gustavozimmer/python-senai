@@ -15,4 +15,4 @@ elif idade2 >= idade1 and idade2 >= idade3:
     print(f"A maior idade é {idade2}")
 else:
     print(f"A maior idade é {idade3}")
-print(max(idade1, idade2, idade3))
+

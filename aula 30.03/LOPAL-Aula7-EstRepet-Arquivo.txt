@@ -1,0 +1,7 @@
+Aqui você está aprendendo
+a ler arquivo
+através do Python
+Em outro momento trabalharemos 
+como gravar em um arquivo txt
+E agora vamos para os 
+Exercicios de fixacao de uso do FOR
