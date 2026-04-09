@@ -41,3 +41,4 @@ if erros < 6:
 else:
     print("Você perdeu!")
     print(f"A palavra era {palavra}")
+    
