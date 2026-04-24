@@ -21,3 +21,4 @@ while qtde_tentativas < 10:
         print("Muito baixo")
     if qtde_tentativas == 10:
         print("Voce perdeu")
+        

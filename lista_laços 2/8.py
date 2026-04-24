@@ -22,7 +22,9 @@ else:
 
     for i in range(0, len(candidatos)):
         print(f"{candidatos[i][0]}: {candidatos[i][1]} votos {candidatos[i][2]:.2f}%")
+    
     maior = candidatos[0][2]
+    
     nome_maior = candidatos[0][0]
     for m in range(len(candidatos) - 1):
         
@@ -30,3 +32,4 @@ else:
             maior = candidatos[m][2]
             nome_maior = candidatos[m][0]
     print(f"Ganhador: {nome_maior}")
+    

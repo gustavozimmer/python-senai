@@ -10,3 +10,4 @@ while qtde_tentativa < 3:
     print("Erro! tente novamente")
 if qtde_tentativa == 3:
     print("Acesso bloqueado")
+    
