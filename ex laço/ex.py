@@ -1,28 +1,30 @@
 from collections import Counter
-# import sys
-# usuario = "admin"
-# senha = "1234"
-# tentativa = 0
-# decisao = 0
+import sys
+usuario = "admin"
+senha = "1234"
+tentativa = 0
+decisao = 0
 produtos = []
+historico_vendas = []
 historico_produto = []
 historico_qtd = []
 historico_valor = []
+venda = 0
 zero = False
-# while True:
-#     tentativa_usuario = str(input("Digite seu usuário: "))
-#     tentativa_senha = str(input("Digite sua senha: "))
-#     tentativa += 1
-#     if tentativa_senha == senha and tentativa_usuario == usuario:
-#         print("Bem vindo")
-#         break
-#     if tentativa == 3:
-#         print("Acesso negado")
-#         sys.exit()
-#     print(f"Tentativas restantes: {3 - tentativa}")
+while True:
+    tentativa_usuario = str(input("Digite seu usuário: "))
+    tentativa_senha = str(input("Digite sua senha: "))
+    tentativa += 1
+    if tentativa_senha == senha and tentativa_usuario == usuario:
+        print("Bem vindo")
+        break
+    if tentativa == 3:
+        print("Acesso negado")
+        sys.exit()
+    print(f"Tentativas restantes: {3 - tentativa}")
 
 while True:
-    print("""1. Cadastrar produto
+    print("""\n1. Cadastrar produto
 2. Listar produtos
 3. Atualizar estoque
 4. Realizar venda
@@ -32,7 +34,7 @@ while True:
     while True:
         decisao = input("Digite sua escolha: ")
         if decisao not in ('1','2', '3', '4', '5', '6'):
-            print("Erro!")
+            print("Erro!\n")
         else:
             break 
     if decisao == '1':
@@ -46,7 +48,7 @@ while True:
                     raise ValueError
                 break
             except ValueError:
-                print("Digite um numero positivo!")
+                print("Digite um numero válido!\n")
         nome = str(input("Digite o nome do produto: "))
         while True: 
             try:
@@ -55,7 +57,7 @@ while True:
                     raise ValueError
                 break
             except ValueError:
-                print("Digite um numero positivo!")
+                print("Digite um numero válido!\n")
         while True:
             try:
                 estoque = int(input("Quantidade: "))        
@@ -63,36 +65,32 @@ while True:
                     raise ValueError
                 break
             except:
-                print("Digite um numero inteiro positivo!")
+                print("Digite um numero válido!\n")
         tipo_produto = [codigo, nome, preco, estoque]
         produtos.append(tipo_produto)
     if decisao == "2":
         if not produtos:
-            print("Nenhum produto adicionado")
+            print("Nenhum produto adicionado\n")
         else:
-            print()
             for produto in produtos:
                 print(f"{produto[0]} | {produto[1]} | {produto[2]} | {produto[3]}")
-            print()
     if decisao == "3":
+        print()
         print("""1. Adicionar estoque
 2. Remover estoque""")
         while True:
             if not produtos:
-                print("Nenhum produto adicionado")
+                print("Nenhum produto adicionado\n")
                 zero = True
                 break
             escolha_estoque = input("Digite sua escolha: ")
             if escolha_estoque not in ('1', '2'):
                 print("Escolha 1 ou 2")
             else:
-                print()
                 for produto in produtos:
-                    print(f"{produto[0]} | {produto[1]} | {produto[2]} | {produto[3]}")
-                print()
+                    print(f"{produto[0]} | {produto[1]} | {produto[2]} | {produto[3]}\n")
                 break
         if zero:
-            print()
             continue
         zero = False
         while True:
@@ -112,7 +110,7 @@ while True:
                     else:
                         raise ValueError
                 except ValueError:
-                    print("Digite um número válido")
+                    print("Digite um número válido\n")
         if escolha_estoque == "1":
             while True: 
                 try:
@@ -120,7 +118,7 @@ while True:
                     if adicao < 0:
                         raise ValueError
                 except ValueError:
-                    print("Digite um numero positivo")
+                    print("Digite um numero válido\n")
                 break
             produtos[indice][3] += adicao
             print("Produto adicionado com sucesso!")
@@ -138,33 +136,34 @@ while True:
     if decisao == '4':
         while True:
             if not produtos:
-                print("Nenhum produto adicionado")
+                print("Nenhum produto adicionado\n")
                 zero = True
                 break
             else:
-                print()
                 for produto in produtos:
-                    print(f"{produto[0]} | {produto[1]} | {produto[2]} | {produto[3]}")
-                print()
+                    print(f"{produto[0]} | {produto[1]} | {produto[2]} | {produto[3]}\n")
+                zero = False
                 break
         if zero:
             print()
             continue
-        zero = False
         while True:
                 try:
+                    indice = -1
                     codigo_pesquisa = int(input("Digite o codigo do produto desejado: "))
                     if codigo_pesquisa < 0:
                         raise ValueError
                     for produto in produtos:
                         if produto[0] != codigo_pesquisa:    
-                            raise ValueError
+                            continue
                         else:
                             indice = produtos.index(produto)
                             break
-                    break
+                    if indice >= 0:
+                        break
+                    raise ValueError
                 except ValueError:
-                    print("Digite um produto válido")
+                    print("Digite um produto válido\n")
         while True: 
             try:
                 remocao = int(input("Remova do estoque: "))
@@ -172,15 +171,18 @@ while True:
                     raise ValueError
                 break
             except ValueError:
-                    print("Digite um numero menor ou igual a quantidade do estoque")
+                    print("Digite um numero menor ou igual a quantidade do estoque\n")
         produtos[indice][3] -= remocao
         preço_total = remocao * produtos[indice][2]
         historico_produto.append(produtos[indice][1])
         historico_qtd.append(remocao)
         historico_valor.append(preço_total)
-        print(historico_produto, historico_qtd, historico_valor)
+        vendido = [produtos[indice][1], remocao]
+        historico_vendas.append(vendido)
+        print(f"Venda {venda}: produto: {historico_produto[venda]} | quantidade: {historico_qtd[venda]} | total: {historico_valor[venda]}")
+        venda += 1
     if decisao == '5':
-        print("""1. Total vendido
+        print("""\n1. Total vendido
 2. Produto mais vendido
 3. Produto com maior estoque
 4. Listar vendas
@@ -197,10 +199,17 @@ while True:
                 for preco in historico_valor:
                     soma_total += preco
                 print(f"O total vendido é: {soma_total}") 
-            elif escolha_relatorio == '2':
-                contador = Counter(historico_produto)
-                mais_vendido = contador.most_common(1)
-                print(f"O produto mais vendido é {mais_vendido[0][0]}")
+            else:
+                print("Não há vendas")
+        elif escolha_relatorio == '2':
+            if historico_vendas:
+                contagem_vendas = Counter()   
+                for item in historico_vendas:
+                    nome_prod = item[0]
+                    quantidade = item[1]
+                    contagem_vendas[nome_prod] += quantidade
+                mais_vendido = contagem_vendas.most_common(1)[0]    
+                print(f"O produto mais vendido é '{mais_vendido[0]}' com {mais_vendido[1]} unidades vendidas.")
             else:
                 print("Não há vendas")
         elif escolha_relatorio == '3':
@@ -211,24 +220,26 @@ while True:
                         maior_estoque = produto[3]
                         nome = produto[1]
             else:
-                print("Não há produtos")
-            print(f"O produto com maior estoque é {nome}")
+                print("Não há produtos\n")
+            print(f"O produto com maior estoque é {nome}\n")
         elif escolha_relatorio == '4':
             if historico_produto != '':
-                print('-' * 10 + "Lista de vendas"  + '-' * 10)
+                print("Lista de vendas".center(51, '-'))
                 for i in range(len(historico_produto)):
-                    print(historico_produto[i] + historico_qtd[i] + historico_valor[i])
+                    print(f"Venda {i}: produto: {historico_produto[i]} | quantidade: {historico_qtd[i]} | total: {historico_valor[i]}")
             else:
-                print("Não há vendas")
+                print("Não há vendas\n")
     if decisao == '6':
         if produtos != '':
-            print(f"Total de produtos cadastrados: {len(produtos)}")
-            if historico_produto != '':
-                print(f"Total de vendas realizadas: {len(historico_produto)}")
+            print(f"Total de produtos cadastrados: {len(produtos)}\n")
+            if historico_produto != []:
+                soma = 0
+                print(f"Total de vendas realizadas: {len(historico_produto)}\n")
                 preco = 0
                 for preco in historico_valor:
                     soma += preco  
-                print(f"Valor total vendido: {soma}")  
+                print(f"Valor total vendido: R$ {soma}\n")  
         else:
-            print("Não há produtos")
-        
+            print("Não há produtos\n")
+        break
+print("Obrigado e volte sempre")
