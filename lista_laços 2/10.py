@@ -13,7 +13,6 @@ while populacao_a < populacao_b:
 
     anos = anos + 1
 
-print("--- RESULTADO DA SIMULAÇÃO ---")
 print(f"Levará {anos} anos para a Cidade A ultrapassar a Cidade B.")
 print(f"População final da Cidade A: {int(populacao_a)} habitantes")
 print(f"População final da Cidade B: {int(populacao_b)} habitantes")

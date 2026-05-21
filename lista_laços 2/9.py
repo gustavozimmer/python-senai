@@ -14,3 +14,4 @@ if soma == numero:
     print("O número é perfeito")
 else:
     print("O número não é perfeito")
+    
