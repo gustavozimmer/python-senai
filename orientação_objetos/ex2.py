@@ -7,6 +7,3 @@ class Pessoa():
 
     def apresentar(self):
         print(f"Colaborador {self.nome} tem {self.idade} anos de idade e trabalha no setor: {self.setor}")        
-
-pessoa = Pessoa("Joaquim", 20, "Produção")
-pessoa.apresentar()

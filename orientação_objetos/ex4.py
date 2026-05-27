@@ -9,8 +9,5 @@ class Produto():
     def mostrar_estoque(self):
         print(f"Produto: {self.nome_produto} | Preço: R${self.preco_unitario} | Quantidade em estoque: {self.quantidade_disponivel}")
 
-produto = Produto("Coca", 10, 13)
-produto.mostrar_estoque()
-
 
         

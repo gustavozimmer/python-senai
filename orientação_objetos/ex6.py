@@ -8,5 +8,3 @@ class Aluno():
     def status(self):
         print(f"Aluno: {self.nome_aluno} | Curso: {self.curso} | Situação: {"Reprovado" if self.nota_final < 7 else "Aprovado"}")
     
-aluno = Aluno("Gustavo", "Desenvolvimento de sistemas", 7)
-aluno.status()

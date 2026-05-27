@@ -6,7 +6,4 @@ class Treinamento():
     
 
     def descricao(self):
-        print(f"Titulo: {self.titulo} | Instrutor: {self.instrutor} | Duração: {self.duracao}")        
-
-treinamento = Treinamento("Treino de força", "Pedro", 60)
-treinamento.descricao()
+        print(f"Titulo: {self.titulo} | Instrutor: {self.instrutor} | Duração: {self.duracao} minutos")        

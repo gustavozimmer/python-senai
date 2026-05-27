@@ -8,6 +8,4 @@ class Manual():
     def informacoes(self):
         print(f"O manual {self.titulo}, escrito por {self.autor}, foi publicado em {self.ano_publicacao}.")
 
-manual = Manual("Teste", "Autor show", 404)
-manual.informacoes()
         

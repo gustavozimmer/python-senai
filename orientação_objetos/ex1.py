@@ -8,5 +8,3 @@ class Carro():
         print(f"Marca: {self.marca}  Modelo: {self.modelo}  ano: {self.ano}")
 
 
-carro1 = Carro("honda", "civic", 2008)
-carro1.detalhes()
